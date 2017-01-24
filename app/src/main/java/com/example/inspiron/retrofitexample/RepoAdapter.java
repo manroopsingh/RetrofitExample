@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.inspiron.retrofitexample.pojos.repoDetails;
 import com.example.inspiron.retrofitexample.pojos.repoList;
 
 import java.util.List;
@@ -66,8 +67,13 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.ViewHolder>{
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                repoDetails repoDetails = new repoDetails(repo.getId(),repo.getName(), repo.getFullName());
+
                 Intent intent = new Intent(context, RepoDetails.class);
                 intent.putExtra("repo", repo.getName());
+                //intent.putExtra("repoObject", repoDetails);
+                intent.putExtra("repoOriginalObject", repo);
                 context.startActivity(intent);
 
             }
